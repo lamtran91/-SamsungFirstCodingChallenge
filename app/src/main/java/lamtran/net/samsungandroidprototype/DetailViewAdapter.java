@@ -8,7 +8,6 @@ import java.util.List;
  * Created by lam on 5/1/17.
  */
 public class DetailViewAdapter extends RecyclerViewImageAdapter {
-    private static final String TAG = DetailViewAdapter.class.getSimpleName();
     private int mCatId;
     private Category mCategory;
 

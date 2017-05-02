@@ -13,30 +13,6 @@ import android.view.View;
 
 public class DetailActivity extends AppCompatActivity {
     public static final String BUNDLE_EXTRA = "bundle_category_extra";
-    public RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
-        boolean hideToolBar = false;
-
-        @Override
-        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-            super.onScrollStateChanged(recyclerView, newState);
-            if (hideToolBar) {
-                getSupportActionBar().hide();
-            } else {
-                getSupportActionBar().show();
-            }
-        }
-
-        @Override
-        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-            super.onScrolled(recyclerView, dx, dy);
-            if (dy > 20) {
-                hideToolBar = true;
-
-            } else if (dy < -5) {
-                hideToolBar = false;
-            }
-        }
-    };
 
     private RecyclerView mRV;
     private AssetManager mAssetManager;
@@ -66,24 +42,6 @@ public class DetailActivity extends AppCompatActivity {
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getBaseContext());
         mRV.setLayoutManager(layoutManager);
         mRV.setAdapter(new DetailViewAdapter(Utils.buildCategories(mAssetManager), mAssetManager, cat));
-
-        mRV.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                int deltaY = scrollY - oldScrollY;
-                if (deltaY > 10) {
-//                    layout.setVisibility(View.VISIBLE);
-//                    Animation ani = AnimationUtils.loadAnimation(getBaseContext(), R.anim.slide_down);
-//                    layout.startAnimation(ani);
-                } else if (deltaY < 10) {
-//                    layout.setVisibility(View.GONE);
-//                    Animation ani = AnimationUtils.loadAnimation(getBaseContext(), R.anim.slide_up);
-//                    layout.startAnimation(ani);
-                }
-
-//                layout.setExpanded(mRV.canScrollVertically(View.FOCUS_DOWN), true);
-            }
-        });
     }
 
     @Override

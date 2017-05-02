@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
                             mCurrentCat = id;
                             populateImage(Utils.buildFilePath(mCategoryList.get(id).getCategory(), mCategoryList.get(id).getFileNames()[mId]));
                             Animation ani = AnimationUtils.loadAnimation(getBaseContext(), R.anim.zoom_in);
+                            Animation ani2 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fade_in);
+                            mExpandedImageView.startAnimation(ani2);
                             mExpandedImageView.startAnimation(ani);
 
                         } catch (IOException e) {
