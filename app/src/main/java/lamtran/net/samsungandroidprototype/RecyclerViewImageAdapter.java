@@ -1,7 +1,7 @@
 package lamtran.net.samsungandroidprototype;
 
 import android.content.res.AssetManager;
-import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -49,7 +49,7 @@ public abstract class RecyclerViewImageAdapter extends RecyclerView.Adapter<Recy
         holder.mTitleTv.setText(getTitle(pos));
         try {
             final String filePath = getFilePath(pos);
-            holder.mImageIv.setImageBitmap(BitmapFactory.decodeStream(mAssetManager.open(filePath)));
+            holder.mImageIv.setImageDrawable(Drawable.createFromStream(mAssetManager.open(filePath), null));
 
             if (mListener != null) {
                 holder.mRootView.setOnClickListener(new View.OnClickListener() {

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_cardview">5dp</dimen>
+    <dimen name="margin_image_view">7dp</dimen>
+    <dimen name="detail_margin_top">10dp</dimen>
+    <dimen name="conner_radius_cardview">5dp</dimen>
+    <dimen name="title_size">30sp</dimen>
+    <dimen name="detail_text_size">15sp</dimen>
+    <dimen name="summary_card_height">200dp</dimen>
+    <dimen name="detail_margin_side">35dp</dimen>
+</resources>
