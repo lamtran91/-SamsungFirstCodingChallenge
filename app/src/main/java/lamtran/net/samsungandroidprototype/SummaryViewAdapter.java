@@ -22,4 +22,16 @@ public class SummaryViewAdapter extends RecyclerViewImageAdapter {
     public int getItemCount() {
         return mCategories != null ? mCategories.size() : -1;
     }
+
+    @Override
+    String getFilePath(int index) {
+        if (mCategories == null || mCategories.get(index) == null) return null;
+        return Utils.buildFilePath(mCategories.get(index).getCategory(), mCategories.get(index).getFileNames()[0]);
+    }
+
+    @Override
+    String getTitle(int index) {
+        if (mCategories == null || mCategories.get(index) == null) return null;
+        return mCategories.get(index).getCategory();
+    }
 }

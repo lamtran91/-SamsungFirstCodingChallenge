@@ -27,7 +27,7 @@ public class Utils {
             try {
                 String[] cats = assetManager.list(ROOT_ASSET);
                 for (String cat : cats) {
-                    String[] files = assetManager.list(ROOT_ASSET+"/"+cat);
+                    String[] files = assetManager.list(ROOT_ASSET + "/" + cat);
                     Category category = new Category(cat, files);
                     categories.add(category);
                 }
@@ -40,5 +40,10 @@ public class Utils {
         }
 
         return CATEGORIES;
+    }
+
+
+    public static String buildFilePath(String cat, String filename) {
+        return Utils.ROOT_ASSET + "/" + cat + "/" + filename;
     }
 }

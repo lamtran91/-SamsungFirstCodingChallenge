@@ -46,17 +46,17 @@ public abstract class RecyclerViewImageAdapter extends RecyclerView.Adapter<Recy
 
         //get the position in the adapter instead of layout position
         final int pos = holder.getAdapterPosition();
-        final Category item = mCategories.get(pos);
-        holder.mTitleTv.setText(item.getCategory());
+        holder.mTitleTv.setText(getTitle(pos));
         try {
-            String filePath = buildFilePath(item.getCategory(), item.getFileNames()[0]);
+            final String filePath = getFilePath(pos);
             holder.mImageIv.setImageBitmap(BitmapFactory.decodeStream(mAssetManager.open(filePath)));
 
             if (mListener != null) {
                 holder.mRootView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mListener.onClick(item.getCategory());
+                        //
+                        mListener.onClick(pos);
                     }
                 });
                 holder.mRootView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -73,14 +73,16 @@ public abstract class RecyclerViewImageAdapter extends RecyclerView.Adapter<Recy
         }
     }
 
-    private String buildFilePath(String cat, String filename) {
-        return Utils.ROOT_ASSET + "/" + cat + "/" + filename;
-    }
 
-    public interface OnCategoryClickListener {
+    abstract String getFilePath(int index);
+
+    abstract String getTitle(int index);
+
+
+    interface OnCategoryClickListener {
         void onLongClick(int id);
 
-        void onClick(String cat);
+        void onClick(int id);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
